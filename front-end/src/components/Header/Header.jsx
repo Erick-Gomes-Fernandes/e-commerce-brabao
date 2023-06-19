@@ -1,9 +1,10 @@
 import React from "react";
 import { GiShoppingCart } from 'react-icons/gi';
-import { AiOutlineUser } from 'react-icons/ai';
 import { IoSearchOutline } from 'react-icons/io5';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import UserOptions from "./UserOptions";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const HeaderArea = styled.header`
   display: flex;
@@ -32,7 +33,7 @@ const NavLinks = styled.nav`
 `;
 
 const NavLink = styled(Link)`
-  margin-right: 20px;
+  margin-right: 5px;
   font-size: 16px;
   font-weight: bold;
 `;
@@ -46,17 +47,19 @@ const Logo = styled(Link)`
   display: inline-block;
 `;
 
-const CartIcon = styled(GiShoppingCart)`
-  margin-right: 5px;
-  font-size: 35px;
-  color: #f5f5f5;
-  &:hover {
-    color: grey;
-    transition: all 0.5s;
-  }
+const HeartIcon = styled(AiOutlineHeart)`
+
+font-size: 35px;
+color: #f5f5f5;
+cursor: pointer;
+transition: color 0.3s ease-in-out;
+
+&:hover {
+  color: grey;
+}
 `;
 
-const UserIcon = styled(AiOutlineUser)`
+const CartIcon = styled(GiShoppingCart)`
   margin-right: 5px;
   font-size: 35px;
   color: #f5f5f5;
@@ -120,9 +123,10 @@ export const Cabecalho = () => {
           <SearchInput type="text" placeholder="Buscar produtos" />
         </SearchBar>
         <NavLinks>
-          <NavLink to="/profile">
-            <UserIcon />
+          <NavLink to="/favorites">
+            <HeartIcon />
           </NavLink>
+          <UserOptions />
           <NavLink to="/cart">
             <CartIcon />
           </NavLink>

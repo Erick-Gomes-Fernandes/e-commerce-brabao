@@ -6,7 +6,11 @@ CREATE TABLE Usuarios (
   password VARCHAR(100) NOT NULL,
   address VARCHAR(255),
   phone VARCHAR(20),
+  birthdate DATE,
+  cep VARCHAR(8),
   registration_date DATETIME DEFAULT CURRENT_TIMESTAMP
+  verification_code VARCHAR(100),
+  verification_code_expires_at DATETIME
 );
 
 -- Tabela de Produtos
@@ -15,36 +19,28 @@ CREATE TABLE Produtos (
   name VARCHAR(100) NOT NULL,
   description TEXT,
   price DECIMAL(10, 2) NOT NULL,
+  thumbnail VARCHAR(255) NULL,
   stock INT NOT NULL,
   category VARCHAR(50)
 );
 
--- Tabela de Pedidos
-CREATE TABLE Pedidos (
+CREATE TABLE Carrinho (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-  status VARCHAR(20),
-  shipping_info VARCHAR(255),
-  FOREIGN KEY (user_id) REFERENCES Users(id)
-);
-
--- Tabela de Itens do Pedido
-CREATE TABLE Detalhes (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  order_id INT NOT NULL,
-  product_id INT NOT NULL,
-  quantity INT NOT NULL,
-  unit_price DECIMAL(10, 2) NOT NULL,
-  FOREIGN KEY (order_id) REFERENCES Orders(id),
-  FOREIGN KEY (product_id) REFERENCES Products(id)
+  usuario_id INT NOT NULL,
+  produto_id VARCHAR(50) NOT NULL,
+  quantidade INT NOT NULL,
+  data_adicao DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id) REFERENCES Usuarios(id),
+  FOREIGN KEY (id) REFERENCES Produtos(id)
 );
 
 -- Tabela de Favoritos
 CREATE TABLE Favoritos (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  product_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES Users(id),
-  FOREIGN KEY (product_id) REFERENCES Products(id)
+  usuario_id INT,
+  produto_id VARCHAR(50),
+  FOREIGN KEY (id) REFERENCES Usuarios(id),
+  FOREIGN KEY (id) REFERENCES Produtos(id)
 );
+
+
