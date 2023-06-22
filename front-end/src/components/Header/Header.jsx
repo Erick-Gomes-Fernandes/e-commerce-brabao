@@ -97,7 +97,6 @@ const CategoryBar = styled.div`
   justify-content: center;
   background-color: #B80F0A;
   padding: 15px 0;
-  margin-bottom: 50px;
   gap: 50px;
 `;
 

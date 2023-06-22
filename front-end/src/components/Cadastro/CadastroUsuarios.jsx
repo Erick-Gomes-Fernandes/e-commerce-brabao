@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { Cabecalho } from "../Header/Header";
 
 const CadastroUsuariosContainer = styled.div`
   max-width: 400px;

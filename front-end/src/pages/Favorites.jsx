@@ -12,7 +12,7 @@ export const Favorites = () => {
     setData(arrFilter)
     setItem('favoritosYt',arrFilter) 
     }
-
+    
     return ( <>
             <Cabecalho />
             <h2> Meus favoritos </h2>
@@ -24,7 +24,7 @@ export const Favorites = () => {
                         <img src={e.thumbnail} alt={e.title}/>
                         <h4>{`R$${e.price}`}</h4> 
                         <button className='coracao' onClick={()=> removeItem(e)} >
-                            <AiFillHeart/>  
+                            <AiFillHeart/>
                         </button>
                 </div>
                 ))}
